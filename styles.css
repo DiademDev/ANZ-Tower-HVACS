@@ -1,0 +1,275 @@
+body {
+    margin: 0;
+    background-color: black;
+}
+
+header {
+    color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+footer {
+    color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-right: 20px;
+    text-align: right;
+}
+
+h1 {
+    margin: 0;
+    padding-bottom: 0px;
+}
+
+h3 {
+    margin: 0;
+    padding-bottom: 0px;
+    padding-top: 5px;
+}
+
+.logo {
+    float: right;
+    padding: 10px;
+    position: relative;
+    bottom: 110px;
+    right: 10px;
+}
+
+#introWindow {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+  color: lightgrey;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: opacity 1s ease-in-out;
+  z-index: 9999;
+}
+
+
+button {
+    background-color: rgb(76, 76, 76);
+    color: darkgray;
+}
+
+#HomeBut {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 135px;
+    right: 90px;
+    padding: none;
+}
+
+#RightBut {
+  border: none;
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  top: 135px;
+  right: 125px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% {
+    box-shadow: 0 0 20px #ffffff;
+  }
+  50%, 100% {
+    box-shadow: none;
+  }
+}
+
+#LeftBut {
+    border: none;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 135px;
+    right: 230px;
+}
+
+#AugmentedBut {
+    border: none;
+    width: 75px;
+    height: 30px;
+    position: absolute;
+    top: 135px;
+    right: 10px;
+    display: none;
+}
+
+button:hover {
+    background-color: rgb(130, 129, 129);
+    font-weight: bold;
+    color: lightgrey;
+}
+
+.custom-QRwindow {
+    font-family: Arial, Helvetica, sans-serif;
+    content: "whats up!";
+    color: rgb(214, 58, 58);
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding-top: 0px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.4);
+    width: 80%;
+    max-width: 250px;
+    height: auto;
+    max-height: 80%;
+  }
+  
+  .top-div-QRwindow {
+    justify-content: center;
+    width: 250px; 
+    height: 250px; 
+    background-color: #3b485d;
+    padding: 0px;
+  }
+
+  .bot-div-QRwindow {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(66, 67, 67);
+    width: 215px; 
+    height: 170px;
+    background-color: none;
+    padding-left: 20px;
+    padding-top: 5px;
+  }
+
+  .mid-div-QRwindow {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    width: 250px; 
+    height: 170px;
+    background-color: white;
+    padding-top: 0px;
+}
+
+  .custom-QRwindow.open {
+    display: block;
+    position: absolute;
+    top: -100%; 
+    animation: slide-in-QRwindow 1s forwards; 
+  }
+
+  .custom-QRwindow.close {
+    animation: slide-out-QRwindow 1s forwards;
+  }
+  
+  @keyframes slide-in-QRwindow {
+    100% {
+      top: 600px;
+    }
+  }
+  
+  @keyframes slide-out-QRwindow {
+    0% {
+      top: 600px;
+    }
+    100% {
+      top: -100%;
+    }
+  }
+
+  .dropdown {
+    border: none;
+    position: absolute;
+    display: inline-block;
+    background-color: rgb(76, 76, 76);
+    color: darkgray;
+    top: 135px;
+    right: 335px;
+    z-index: 9999;
+  }
+  
+  .dropdown button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    border: none;
+    color: darkgray;
+    border-radius: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out; /* Add transition effect for smooth hover */
+  }
+
+  .dropdown button:hover {
+    background-color: rgb(76, 76, 76);
+  }
+  
+  .dropdown-content {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: darkgray;
+    background-color: rgb(76, 76, 76);
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    background-color: rgb(76, 76, 76);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 20px 15px;
+    border-radius: 0; /* Remove rounded corners */
+  }
+  
+  .dropdown-content div {
+    padding: 4px 0; /* Add padding to the dropdown options */
+    cursor: pointer; /* Add cursor pointer for better user experience */
+  }
+
+  .dropdown-content div:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* Update the background color when hovering */
+  }  
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: darkgray;
+    background-color: rgb(76, 76, 76);
+  }
+
+  #sliderContainer {
+    position: absolute;
+    top: 140px;
+    right: 550px;
+    width: 200px;
+    z-index: 9999;
+  }
+
+  #slider {
+    width: 100%;
+  }
+
+#Slider-text {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: rgb(141, 141, 141);
+  position: absolute;
+  left: -130px;
+  padding-bottom: 0px;
+}
+
+
+  
+  
