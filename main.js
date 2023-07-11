@@ -36,18 +36,28 @@ async function main() {
     console.log(`Error loading Photorealistic 3D Tiles tileset.\n${error}`);
   }
 
-  try {
-    const tileset = new Cesium.Cesium3DTileset({
-      url: Cesium.IonResource.fromAssetId(1974321),
-    });
-    viewer.scene.primitives.add(tileset);
-  } catch (error) {
-    console.log(error);
-  }
+  // try {
+  //   const tileset = new Cesium.Cesium3DTileset({
+  //     url: Cesium.IonResource.fromAssetId(1974321),
+  //   });
+  //   viewer.scene.primitives.add(tileset);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 
   // Import data source file
   const dataSourcePromise = Cesium.CzmlDataSource.load("data.czml");
   viewer.dataSources.add(dataSourcePromise);
+
+  // Function to extract description and update the HTML
+  function updateDescription(entity) {
+    const descriptionElement = document.getElementById("description");
+    if (entity.description && entity.description.getValue()) {
+      descriptionElement.textContent = entity.description.getValue();
+    } else {
+      descriptionElement.textContent = "No description available.";
+    }
+  }
 
   // Sort data to get position values of each entity
   dataSourcePromise.then((dataSource) => {
@@ -67,6 +77,7 @@ async function main() {
       var slider = document.getElementById("slider");
       slider.value = 0;
       previousValue = 0;
+      updateDescription(entity);
       camFlyTo(positionValue);
 
       currentIndex++;
@@ -84,6 +95,7 @@ async function main() {
       var slider = document.getElementById("slider");
       slider.value = 0;
       previousValue = 0;
+      updateDescription(entity);
       camFlyTo(positionValue);
 
       currentIndex--;
@@ -175,62 +187,52 @@ async function main() {
     }
   });
 
-  // Select model from drop-down menu
-async function createModel(url, height) {
+// Define an array to store the added tilesets
+const addedTilesets = [];
+
+// Select model from drop-down menu
+async function createModel(id) {
+  // Remove existing model tilesets
+  addedTilesets.forEach((tileset) => {
+    viewer.scene.primitives.remove(tileset);
+  });
+  addedTilesets.length = 0;
+
   try {
-    viewer.entities.removeAll();
-
-    const position = Cesium.Cartesian3.fromDegrees(
-      174.7643523357,
-      -36.8456472918,
-      height
-    );
-    const heading = Cesium.Math.toRadians(20.2);
-    const pitch = 0;
-    const roll = 0;
-    const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
-    const orientation = Cesium.Transforms.headingPitchRollQuaternion(
-      position,
-      hpr
-    );
-
-    const entity = await viewer.entities.add({
-      name: url,
-      position: position,
-      orientation: orientation,
-      model: {
-        uri: url,
-        minimumPixelSize: 128,
-        maximumScale: 20000,
-      },
+    const tileset = new Cesium.Cesium3DTileset({
+      url: Cesium.IonResource.fromAssetId(id),
     });
+    viewer.scene.primitives.add(tileset);
+    addedTilesets.push(tileset);
   } catch (error) {
-    console.log(`Error creating model.\n${error}`);
+    console.log(error);
   }
 }
 
+// Create dropdown list
+const options = [
+  {
+    text: "LAYOUT OPTION 1",
+    onselect: function () {
+      createModel(1974321);
+    },
+  },
+  {
+    text: "LAYOUT OPTION 2",
+    onselect: function () {
+      createModel(1974322);
+    },
+  },
+  {
+    text: "LAYOUT OPTION 3",
+    onselect: function () {
+      createModel(1974289);
+    },
+  },
+];
 
-  // Create dropdown list
-  const options = [
-    {
-      text: "LAYOUT OPTION 1",
-      onselect: function () {
-        createModel("./models/ANZ_tower_01.glb", 47.471523166);
-      },
-    },
-    {
-      text: "LAYOUT OPTION 2",
-      onselect: function () {
-        createModel("./models/ANZ_tower_02.glb", 47.471523166);
-      },
-    },
-    {
-      text: "LAYOUT OPTION 3",
-      onselect: function () {
-        createModel("./models/ANZ_tower_03.glb", 47.471523166);
-      },
-    },
-  ];
+// Load the first model
+createModel(1974321);
 
   options.forEach(function (option) {
     var item = document.createElement("div");

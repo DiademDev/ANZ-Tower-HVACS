@@ -11,7 +11,7 @@
     {
       "cartographicDegrees": [174.755103, -36.840220, 40]
     },  
-    "description": "<p>Silo Park on Jellicoe St. Viewing distance approximately 700m.</p>", 
+    "description": "Silo Park on Jellicoe St. Viewing distance approximately 1000m.", 
        
     "ellipsoid": 
     {
@@ -39,7 +39,7 @@
     {
       "cartographicDegrees": [174.75883988197472, -36.83661823395488, 40] 
     },  
-    "description": "<p>Corner of Custom St. and Queen St. Viewing distance approximately 160m.</p>", 
+    "description": "Hamer Street. Viewing distance approximately 1100m", 
        
     "ellipsoid": 
     {
@@ -67,7 +67,7 @@
     {
       "cartographicDegrees": [174.76316634106078, -36.84062972451748, 40]
     },  
-    "description": "<p>Viewing distance approximately 30m.</p>", 
+    "description": "NZ Maritime Museum. Viewing distance approximately 550m.", 
        
     "ellipsoid": 
     {
@@ -95,7 +95,7 @@
     {
       "cartographicDegrees": [174.76548375379613, -36.841170600473944, 40]
     },  
-    "description": "<p>Queen St. Viewing distance approximately 50m.</p>", 
+    "description": "Princess Wharf. Viewing distance approximately 480m.", 
        
     "ellipsoid": 
     {
@@ -123,7 +123,7 @@
     {
       "cartographicDegrees": [174.76825136777643, -36.84000155780483, 40]
     },  
-    "description": "<p>Corner of Wellesley St. and Queen St. Viewing distance approximately 330m.</p>", 
+    "description": "Queens Wharf. Viewing distance approximately 700m.", 
        
     "ellipsoid": 
     {
@@ -151,7 +151,7 @@
     {
       "cartographicDegrees": [174.76766237224962, -36.841349927580495, 40] 
     },  
-    "description": "<p>Fanshawe St. Viewing distance approximately 720m.</p>", 
+    "description": "Queens Wharf. Viewing distance approximately 550m.", 
        
     "ellipsoid": 
     {
@@ -179,7 +179,7 @@
     {
       "cartographicDegrees": [174.77405702650242, -36.84402079203342, 42]
     },  
-    "description": "<p>Fanshawe St. Viewing distance approximately 850m.</p>", 
+    "description": "Tinley St. Viewing distance approximately 870m.", 
        
     "ellipsoid": 
     {
@@ -207,7 +207,7 @@
     {
       "cartographicDegrees": [174.76991689939896, -36.84385996326876, 40]
     },  
-    "description": "<p>Fanshawe St. Viewing distance approximately 920m.</p>", 
+    "description": "Quay St. Viewing distance approximately 520m.", 
        
     "ellipsoid": 
     {
