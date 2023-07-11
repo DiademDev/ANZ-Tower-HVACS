@@ -24,26 +24,15 @@ async function main() {
 
   // Cesium globe true or false
   viewer.scene.globe.show = false;
-
-  // Remove Cesium logo
   viewer._cesiumWidget._creditContainer.style.display = "none";
 
-  // Add Photorealistic 3D Tiles - Turn on/off
+  // Add Photorealistic 3D Tiles
   try {
     const tileset = await Cesium.createGooglePhotorealistic3DTileset();
     viewer.scene.primitives.add(tileset);
   } catch (error) {
     console.log(`Error loading Photorealistic 3D Tiles tileset.\n${error}`);
   }
-
-  // try {
-  //   const tileset = new Cesium.Cesium3DTileset({
-  //     url: Cesium.IonResource.fromAssetId(1974321),
-  //   });
-  //   viewer.scene.primitives.add(tileset);
-  // } catch (error) {
-  //   console.log(error);
-  // }
 
   // Import data source file
   const dataSourcePromise = Cesium.CzmlDataSource.load("data.czml");
@@ -163,6 +152,7 @@ async function main() {
     });
   }
 
+  // Press Home button actions
   const homeButton = document.getElementById("HomeBut");
   homeButton.addEventListener("click", function () {
     var slider = document.getElementById("slider");
@@ -171,68 +161,52 @@ async function main() {
     resetCameraPositionToHome();
   });
 
-  // Create button Augmented
-  const augmentedButton = document.getElementById("AugmentedBut");
+  // Define an array to store the added tilesets
+  const addedTilesets = [];
 
-  // Augmented button EventListener
-  augmentedButton.addEventListener("click", function () {
-    if (QRwindow.classList.contains("close")) {
-      QRwindow.classList.remove("close");
-      QRwindow.classList.add("open");
-    } else if (QRwindow.classList.contains("open")) {
-      QRwindow.classList.remove("open");
-      QRwindow.classList.add("close");
-    } else if (!QRwindow.classList.contains("open")) {
-      QRwindow.classList.add("open");
-    }
-  });
+  // Select model from drop-down menu
+  async function createModel(id) {
 
-// Define an array to store the added tilesets
-const addedTilesets = [];
-
-// Select model from drop-down menu
-async function createModel(id) {
-  // Remove existing model tilesets
-  addedTilesets.forEach((tileset) => {
-    viewer.scene.primitives.remove(tileset);
-  });
-  addedTilesets.length = 0;
-
-  try {
-    const tileset = new Cesium.Cesium3DTileset({
-      url: Cesium.IonResource.fromAssetId(id),
+    // Remove existing model tilesets
+    addedTilesets.forEach((tileset) => {
+      viewer.scene.primitives.remove(tileset);
     });
-    viewer.scene.primitives.add(tileset);
-    addedTilesets.push(tileset);
-  } catch (error) {
-    console.log(error);
+    addedTilesets.length = 0;
+
+    try {
+      const tileset = new Cesium.Cesium3DTileset({
+        url: Cesium.IonResource.fromAssetId(id),
+      });
+
+      viewer.scene.primitives.add(tileset);
+      addedTilesets.push(tileset);
+
+    } catch (error) {
+      console.log(error);
+    }
   }
-}
 
-// Create dropdown list
-const options = [
-  {
-    text: "LAYOUT OPTION 1",
-    onselect: function () {
-      createModel(1974321);
+  // Create dropdown list
+  const options = [
+    {
+      text: "LAYOUT OPTION 1",
+      onselect: function () {
+        createModel(1974321);
+      },
     },
-  },
-  {
-    text: "LAYOUT OPTION 2",
-    onselect: function () {
-      createModel(1974322);
+    {
+      text: "LAYOUT OPTION 2",
+      onselect: function () {
+        createModel(1974322);
+      },
     },
-  },
-  {
-    text: "LAYOUT OPTION 3",
-    onselect: function () {
-      createModel(1974289);
+    {
+      text: "LAYOUT OPTION 3",
+      onselect: function () {
+        createModel(1974289);
+      },
     },
-  },
-];
-
-// Load the first model
-createModel(1974321);
+  ];
 
   options.forEach(function (option) {
     var item = document.createElement("div");
@@ -305,6 +279,10 @@ createModel(1974321);
     console.log(zoomFactor);
     previousValue = currentValue;
   });
+
+  // Load the first model
+  createModel(1974321);
+
 }
 
 main();
@@ -385,6 +363,33 @@ main();
 	QRwindow.appendChild(midQRwindowDiv);
 
 	container.appendChild(QRwindow);
+
+  // Create button Augmented
+  const augmentedButton = document.getElementById("AugmentedBut");
+
+  // Augmented button EventListener
+  augmentedButton.addEventListener("click", function () {
+    if (QRwindow.classList.contains("close")) {
+      QRwindow.classList.remove("close");
+      QRwindow.classList.add("open");
+    } else if (QRwindow.classList.contains("open")) {
+      QRwindow.classList.remove("open");
+      QRwindow.classList.add("close");
+    } else if (!QRwindow.classList.contains("open")) {
+      QRwindow.classList.add("open");
+    }
+  });
+
+  // Load Asset from ID
+  try {
+    const tileset = new Cesium.Cesium3DTileset({
+      url: Cesium.IonResource.fromAssetId(1974321),
+    });
+    viewer.scene.primitives.add(tileset);
+  } catch (error) {
+    console.log(error);
+  }
+
 
   */
 
