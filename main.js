@@ -194,7 +194,7 @@ async function main() {
         text: "LAYOUT OPTION 1",
         onselect: function () {
           createModel(
-            "./models/ANZ_tower_01",
+            "./models/ANZ_tower_01.glb",
             47.471523166
           );
         },
@@ -203,7 +203,7 @@ async function main() {
         text: "LAYOUT OPTION 2",
         onselect: function () {
           createModel(
-            "./models/ANZ_tower_02",
+            "./models/ANZ_tower_02.glb",
             47.471523166
           );
         },
@@ -212,7 +212,7 @@ async function main() {
         text: "LAYOUT OPTION 3",
         onselect: function () {
           createModel(
-            "./models/ANZ_tower_03",
+            "./models/ANZ_tower_03.glb",
             47.471523166
           );
         },
