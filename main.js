@@ -22,6 +22,9 @@ async function main() {
     baseLayerPicker: false,
   });
 
+  // Add ambient light
+  viewer.scene.globe.enableLighting = true;
+
   // Cesium globe true or false
   viewer.scene.globe.show = false;
   viewer._cesiumWidget._creditContainer.style.display = "none";
