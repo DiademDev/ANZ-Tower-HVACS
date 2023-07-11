@@ -37,7 +37,7 @@ async function main() {
     }
 
     try {
-      const tileset = new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(1952197) });
+      const tileset = new Cesium.Cesium3DTileset({ url: Cesium.IonResource.fromAssetId(1974321) });
       viewer.scene.primitives.add(tileset);
   
     } catch (error) {
