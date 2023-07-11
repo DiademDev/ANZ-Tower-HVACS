@@ -167,7 +167,7 @@ async function main() {
         -36.8456472918,
         height
       );
-      const heading = Cesium.Math.toRadians(135);
+      const heading = Cesium.Math.toRadians(20.2);
       const pitch = 0;
       const roll = 0;
       const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
@@ -194,8 +194,8 @@ async function main() {
         text: "LAYOUT OPTION 1",
         onselect: function () {
           createModel(
-            "./models/Beetle.glb",
-            200.0
+            "./models/ANZ_tower_01",
+            47.471523166
           );
         },
       },
@@ -203,8 +203,8 @@ async function main() {
         text: "LAYOUT OPTION 2",
         onselect: function () {
           createModel(
-            "./models/Bus.glb",
-            200.0
+            "./models/ANZ_tower_02",
+            47.471523166
           );
         },
       },
@@ -212,8 +212,8 @@ async function main() {
         text: "LAYOUT OPTION 3",
         onselect: function () {
           createModel(
-            "./models/Sports.glb",
-            200
+            "./models/ANZ_tower_03",
+            47.471523166
           );
         },
       },
